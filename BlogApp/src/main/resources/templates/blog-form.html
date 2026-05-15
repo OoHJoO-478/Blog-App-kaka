@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ登録画面</title>
+     <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="blog-page">
+
+<header class="blog-header">
+    <div class="logo">Blog</div>
+    <nav>
+        <a href="/blog-list">Home</a>
+        <a href="/blog-form">Blog Register</a>
+        <a href="/logout" class="logout">Logout</a>
+    </nav>
+</header>
+
+<main class="blog-main">
+    <section class="form-card">
+        <h1>新しい記事を投稿</h1>
+
+        <form action="/blog-register" method="post">
+            <label>タイトル</label>
+            <input type="text" name="blogTitle" placeholder="例）個人開発のまとめ">
+
+            <label>カテゴリ</label>
+            <input type="text" name="categoryName" placeholder="例）IT技術 / 料理 / 旅行">
+
+            <label>本文</label>
+            <textarea name="article" placeholder="本文を入力してください..."></textarea>
+
+            <label>カバー画像</label>
+            <input type="file" name="blogImage">
+
+            <div class="button-area">
+                <button type="submit" class="main-btn">公開する</button>
+                <button type="reset" class="reset-btn">リセット</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer>Copyright © SMH All rights reserved</footer>
+
+</body>
+</html>

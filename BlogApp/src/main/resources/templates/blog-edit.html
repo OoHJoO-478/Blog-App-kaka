@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ編集画面</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="blog-page">
+
+<header class="blog-header">
+    <div class="logo">Blog</div>
+    <nav>
+        <a href="/blog-list">Home</a>
+        <a href="/blog-form">Blog Register</a>
+        <a href="/logout" class="logout">Logout</a>
+    </nav>
+</header>
+
+<main class="blog-main">
+    <section class="form-card">
+        <h1>記事を編集</h1>
+
+        <form action="/blog-edit" method="post">
+            <label>タイトル</label>
+            <input type="text" name="blogTitle" placeholder="タイトルを入力">
+
+            <label>カテゴリ</label>
+            <input type="text" name="categoryName" placeholder="カテゴリを入力">
+
+            <label>本文</label>
+            <textarea name="article" placeholder="本文を入力してください..."></textarea>
+
+            <div class="button-area">
+                <button type="submit" class="main-btn">更新する</button>
+                <button type="button" class="delete-btn">削除する</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer>Copyright © SMH All rights reserved</footer>
+
+</body>
+</html>
