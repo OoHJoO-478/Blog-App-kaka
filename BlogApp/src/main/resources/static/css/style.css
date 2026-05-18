@@ -1,21 +1,29 @@
+/* =========================
+   1. ログイン画面・会員登録画面
+   login.html / register.html
+========================= */
+
 .login-page {
     margin: 0;
     height: 100vh;
-   background-image: url("../img/bg-Image.jpg");
+    background-image: url("../img/bg-Image.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
 }
 
+/* ログイン・登録フォーム全体 */
 .login-box {
     width: 360px;
     text-align: center;
 }
 
+/* Login / Register のタイトル */
 .login-box h1 {
     color: white;
     font-size: 42px;
@@ -23,6 +31,7 @@
     margin-bottom: 30px;
 }
 
+/* 入力欄 */
 .login-box input {
     width: 100%;
     height: 55px;
@@ -36,18 +45,24 @@
     outline: none;
 }
 
-
+/* 入力欄の中の文字 */
 .login-box input::placeholder {
     color: rgba(255, 255, 255, 0.8);
 }
+
+/* 入力欄をクリックした時 */
 .login-box input:focus {
     background: white;
     color: #5f8fe8;
     border-color: white;
 }
+
+/* 入力欄をクリックした時、placeholderを消す */
 .login-box input:focus::placeholder {
     color: transparent;
 }
+
+/* ログイン・登録ボタン */
 .login-box button {
     width: 100%;
     height: 55px;
@@ -59,9 +74,12 @@
     cursor: pointer;
 }
 
+/* 「アカウントを持っていない方は」などの文字 */
 .login-box p {
     color: white;
 }
+
+/* 会員登録 / ログイン リンク */
 .login-box a {
     display: block;
     margin-top: 25px;
@@ -69,6 +87,12 @@
     font-size: 20px;
     text-decoration: none;
 }
+
+
+/* =========================
+   2. ブログ系ページ共通
+   blog-list.html / blog-form.html / blog-edit.html / blog-manage.html
+========================= */
 
 .blog-page {
     margin: 0;
@@ -81,12 +105,7 @@
     color: #172033;
 }
 
-.blog-top {
-    padding: 0 0 20px 40px;
-    margin-bottom: 30px;
-    transform: translateY(-20px);
-}
-
+/* ヘッダー */
 .blog-header {
     height: 70px;
     padding: 0 50px;
@@ -96,12 +115,14 @@
     align-items: center;
 }
 
+/* Blog ロゴ */
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: #1e90ff;
 }
 
+/* ヘッダーリンク */
 .blog-header a {
     margin-left: 30px;
     color: #172033;
@@ -109,6 +130,7 @@
     font-size: 18px;
 }
 
+/* Logout ボタン */
 .blog-header .logout {
     background: #ffe0e0;
     color: #c0392b;
@@ -116,19 +138,24 @@
     border-radius: 12px;
 }
 
+/* メイン全体 */
 .blog-main {
     width: 80%;
     margin: 60px auto;
 }
 
+/* 上の「ようこそ」部分 */
 .blog-top {
+    padding: 0 0 20px 40px;
     margin-bottom: 40px;
+    transform: translateY(-20px);
 }
 
 .blog-top h1 {
     font-size: 36px;
 }
 
+/* 青いメインボタン */
 .main-btn {
     display: inline-block;
     background: #1e90ff;
@@ -141,6 +168,7 @@
     cursor: pointer;
 }
 
+/* 白い透明カード */
 .blog-card,
 .form-card {
     background: rgba(255, 255, 255, 0.88);
@@ -149,12 +177,20 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
+
+/* =========================
+   3. ブログ一覧画面
+   blog-list.html
+========================= */
+
+/* 記事1件分 */
 .article-item {
     display: flex;
     gap: 25px;
     align-items: center;
 }
 
+/* No Image 部分 */
 .article-img {
     width: 170px;
     height: 120px;
@@ -166,6 +202,13 @@
     color: #7d8ca3;
 }
 
+
+/* =========================
+   4. ブログ登録・編集画面
+   blog-form.html / blog-edit.html
+========================= */
+
+/* 入力欄・本文欄 */
 .form-card input,
 .form-card textarea {
     width: 100%;
@@ -173,17 +216,24 @@
     padding: 16px;
     border: 1px solid #dce3ef;
     border-radius: 14px;
-    font-size: 18px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.form-card {
+    padding: 35px 50px;
 }
 
+/* 本文入力欄 */
 .form-card textarea {
     height: 260px;
 }
 
+/* ボタンエリア */
 .button-area {
     margin-top: 25px;
 }
 
+/* リセット・削除ボタン */
 .reset-btn,
 .delete-btn {
     padding: 14px 26px;
@@ -194,18 +244,181 @@
     cursor: pointer;
 }
 
+/* リセットボタン */
 .reset-btn {
     background: #eef3ff;
     color: #172033;
 }
 
+/* 削除ボタン */
 .delete-btn {
     background: #ffe0e0;
     color: #c0392b;
 }
 
-footer {
+/* ブログ登録画面のタイトル */
+.blog-form-page .form-card h1 {
+    margin-bottom: 5px;
+}
+
+/* ブログ登録画面の説明文 */
+.blog-form-page .form-subtitle {
+    color: #66758f;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* 入力補足説明 */
+.form-hint {
+    color: #7d8ca3;
+    font-size: 14px;
+    margin-top: -12px;
+    margin-bottom: 22px;
+}
+
+/* チェックボックス */
+.check-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 22px 0;
+    font-size: 18px;
+    color: #172033;
+}
+
+.check-label input {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+/* 画像プレビュー */
+.image-preview {
+    height: 260px;
+    border: 2px dashed #d4e0ef;
+    border-radius: 16px;
+    color: #7d8ca3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 16px;
+}
+
+/* 下書き保存ボタン */
+.draft-btn {
+    padding: 14px 26px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    margin-left: 12px;
+    cursor: pointer;
+    background: #eef3ff;
+    color: #172033;
+    font-weight: bold;
+}
+
+
+/* =========================
+   5. 記事ステータス管理画面
+   blog-manage.html
+========================= */
+
+/* 記事管理テーブル全体 */
+.blog-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #dce3ef;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* テーブル見出し */
+.blog-table th {
+    background: #eef3fa;
+    padding: 16px;
+    text-align: left;
+    color: #26384f;
+    font-size: 16px;
+}
+
+/* テーブル中身 */
+.blog-table td {
+    padding: 22px 16px;
+    border-top: 1px solid #eef1f5;
+    color: #172033;
+    font-size: 14px;
+}
+
+/* 記事タイトルリンク */
+.article-link {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 公開・非公開のセレクト */
+.status-select {
+    border: none;
+    background: transparent;
+    color: #1e90ff;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 保存・編集ボタン */
+.save-btn,
+.edit-btn {
+    border: none;
+    background: transparent;
+    color: #1e90ff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    margin-right: 14px;
+}
+
+/* マウスを乗せた時 */
+.save-btn:hover,
+.edit-btn:hover,
+.article-link:hover {
+    text-decoration: underline;
+}
+
+/* 記事がない時の表示 */
+.empty-message {
     text-align: center;
     color: #7d8ca3;
+    padding: 35px;
+}
+/* 削除 */
+.delete-action-btn {
+    border: none;
+    background: transparent;
+    color: #e74c3c;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-action-btn:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   6. フッター
+   全ページ共通
+========================= */
+
+footer {
+    text-align: center;
+    color: #eef3ff;
     padding: 40px;
 }

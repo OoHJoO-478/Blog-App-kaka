@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事ステータス管理</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body class="blog-page">
+
+<header class="blog-header">
+    <div class="logo">Blog</div>
+    <nav>
+        <a href="/blog-list">Home</a>
+        <a href="/blog-form">Blog Register</a>
+        <a href="/logout" class="logout">Logout</a>
+    </nav>
+</header>
+
+<main class="blog-main">
+
+    <section class="form-card">
+        <h1>記事ステータス管理</h1>
+        <p class="form-subtitle">下の表から、記事ごとにステータスを変更できます。</p>
+
+        <table class="blog-table">
+            <thead>
+                <tr>
+                    <th>タイトル</th>
+                    <th>カテゴリ</th>
+                    <th>作成日時</th>
+                    <th>ステータス</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- 今はデータがないため、空状態を表示 -->
+                <tr>
+                    <td colspan="5" class="empty-message">
+                        まだ記事がありません。
+                    </td>
+                </tr>
+
+                <!-- 以后连接数据库后，有数据时可以用下面这一段 -->
+                <!--
+                <tr>
+                    <td>
+                        <a href="/blog-detail" class="article-link">記事タイトル</a>
+                    </td>
+                    <td>料理</td>
+                    <td>2025/08/27<br>11:04</td>
+                    <td>
+                        <select class="status-select">
+                            <option>公開</option>
+                            <option>非公開</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" class="save-btn">保存</button>
+                        <a href="/blog-edit" class="edit-btn">編集</a>
+                        <button type="button" class="delete-action-btn">削除</button>
+                    </td>
+                </tr>
+                -->
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    Copyright © SMH All rights reserved
+</footer>
+
+</body>
+</html>
