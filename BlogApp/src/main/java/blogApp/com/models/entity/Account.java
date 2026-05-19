@@ -23,13 +23,13 @@ public class Account {
 
 	public Account() {
 	}
-
-	public Account(String accountEmail, String accountName, String password, LocalDateTime registerDate) {
-		this.accountEmail = accountEmail;
-		this.accountName = accountName;
-		this.password = password;
-		this.registerDate = registerDate;
+	public Account(String accountEmail, String accountName, String password) {
+	    this.accountEmail = accountEmail;
+	    this.accountName = accountName;
+	    this.password = password;
 	}
+
+	
 
 	public Long getAccountId() {
 		return accountId;
