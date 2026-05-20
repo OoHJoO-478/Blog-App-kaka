@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ブログ一覧画面</title>
@@ -10,15 +10,15 @@
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a href="/blog-list">Home</a>
+        <a href="/blog-list"th:text="${accountName}"></a>
         <a href="/blog-form">Blog Register</a>
-        <a href="/logout" class="logout">Logout</a>
+        <a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>
 
 <main class="blog-main">
     <section class="blog-top">
-        <h1>ようこそ、User さん！</h1>
+        <h1>ようこそ、<span th:text="${accountName}">User</span> さん！</h1>
         <p>ここからブログを書いたり、編集したり、管理できます。</p>
         <a href="/blog-form" class="main-btn">新しい記事を書く</a>
     </section>
@@ -29,14 +29,23 @@
         <a href="/blog-manage" class="manage-link">記事ステータス管理</a>
     </div>
 
-    <article class="article-item">
-        <div class="article-img">No Image</div>
-        <div>
-            <h3>記事タイトル</h3>
-            <p>・by User</p>
-            <a href="/blog-edit">続きを読む →</a>
-        </div>
-    </article>
+	<article class="article-item" th:each="blog:${blogList}">
+		<div class="article-img">
+		    <img th:if="${blog.blogImage != null and blog.blogImage != ''}"
+		         th:src="@{/img/{imagePath}(imagePath=${blog.blogImage})}"
+		         alt="cover">
+
+		    <span th:if="${blog.blogImage == null or blog.blogImage == ''}">
+		        No Image
+		    </span>
+		</div>
+
+	    <div>
+	        <h3 th:text="${blog.blogTitle}">記事タイトル</h3>
+	        <p>・by <span th:text="${accountName}">User</span></p>
+	        <a th:href="@{/blog-edit(blogId=${blog.blogId})}">続きを読む →</a>
+	    </div>
+	</article>
 </section>
 </main>
 

@@ -6,29 +6,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import blogApp.com.models.entity.Account;
 import blogApp.com.services.AccountServices;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class AccountRegister {
+public class AccountLoginController {
 	@Autowired
 	private AccountServices accountServices;
 	
-	@GetMapping("/register")
+	@Autowired
+	private HttpSession session;
+	
+	@GetMapping("/login")
 	public String getAccountRegisterPage() {
-		return "register.html";
+		return "login";
 	}
 	
-	@PostMapping("/register/process")
-	public String accountRegisterProcess(
-	        @RequestParam String accountName,
-	        @RequestParam String accountEmail,
+	@PostMapping("/login/process")
+	public String accountLoginProcess(@RequestParam String accountEmail,
 	        @RequestParam String password) {
-
-	    if (accountServices.createAccount(accountEmail, accountName, password)) {
-	        return "login";
-	    } else {
-	        return "register";
-	    }
+		Account account = accountServices.loginCheck(accountEmail, password);
+		if(account == null) {
+			return "login";
+		}else {
+			session.setAttribute("loginAccountInfo", account);
+			return "redirect:/blog-list";
+		}
+		
 	}
+	
+	
 
 }

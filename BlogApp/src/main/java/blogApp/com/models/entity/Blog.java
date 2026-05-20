@@ -2,6 +2,7 @@ package blogApp.com.models.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +11,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Blog {
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long blogId;
 
 	 private String blogTitle;
@@ -22,9 +23,9 @@ public class Blog {
 	 private String article;
 
 	 private Long accountId;
-
+	 @Column(insertable = false)
 	 private LocalDateTime createdAt;
-
+	 @Column(insertable = false)
 	 private LocalDateTime updatedAt;
 
 	 public Blog() {
