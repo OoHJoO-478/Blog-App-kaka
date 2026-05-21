@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ブログ編集画面</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body class="blog-page">
 
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a href="/blog-list">Home</a>
-        <a href="/blog-form">Blog Register</a>
-        <a href="/logout" class="logout">Logout</a>
+		<a th:href="@{/blog-list}"th:text="${accountName}"></a>
+		<a th:href="@{/blog-form}">Blog Register</a>
+		<a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>
 
@@ -20,25 +21,67 @@
     <section class="form-card">
         <h1>記事を編集</h1>
 
-        <form action="/blog-edit" method="post">
+        <form action="/blog-edit" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="blogId" th:value="${blog.blogId}">
+
             <label>タイトル</label>
-            <input type="text" name="blogTitle" placeholder="タイトルを入力">
+            <input type="text" name="blogTitle" th:value="${blog.blogTitle}">
+            <p class="form-hint">120文字まで</p>
 
             <label>カテゴリ</label>
-            <input type="text" name="categoryName" placeholder="カテゴリを入力">
+            <input type="text" name="categoryName" th:value="${blog.categoryName}">
+
+            <label class="check-label">
+                <input type="checkbox" name="commentAllowed" checked>
+                コメントを許可する
+            </label>
 
             <label>本文</label>
-            <textarea name="article" placeholder="本文を入力してください..."></textarea>
+            <textarea name="article" th:text="${blog.article}"></textarea>
+
+            <div class="text-info">
+                <span>改行可・プレーンテキスト</span>
+                <span>0文字</span>
+            </div>
+
+            <label>カバー画像</label>
+            <input type="file" name="blogImageFile">
+
+            <div class="image-preview">
+                <img th:if="${blog.blogImage != null and blog.blogImage != ''}"
+                     th:src="@{/img/{imagePath}(imagePath=${blog.blogImage})}"
+                     alt="cover">
+
+                <span th:if="${blog.blogImage == null or blog.blogImage == ''}">
+                    画像プレビュー
+                </span>
+            </div>
+
+            <p class="form-hint">推奨 1280×720 以上、JPG/PNG。</p>
 
             <div class="button-area">
                 <button type="submit" class="main-btn">更新する</button>
-                <button type="button" class="delete-btn">削除する</button>
+                <a th:href="@{/blog-delete(blogId=${blog.blogId})}" class="delete-btn">削除する</a>
             </div>
         </form>
     </section>
 </main>
 
 <footer>Copyright © SMH All rights reserved</footer>
+
+<script>
+    const fileInput = document.querySelector('input[name="blogImageFile"]');
+    const preview = document.querySelector('.image-preview');
+
+    fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+
+        if (file) {
+            preview.innerHTML = `<img src="${URL.createObjectURL(file)}" alt="preview">`;
+        }
+    });
+</script>
 
 </body>
 </html>

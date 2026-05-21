@@ -21,4 +21,37 @@ public class BlogServices {
             return blogDao.findByAccountId(accountId);
         }
     }
+
+    public void createBlog(String blogTitle,
+                           String categoryName,
+                           String blogImage,
+                           String article,
+                           Long accountId) {
+
+        Blog blog = new Blog(blogTitle, categoryName, blogImage, article, accountId);
+        blogDao.save(blog);
+    }
+    public Blog findBlogById(Long blogId) {
+        return blogDao.findById(blogId).orElse(null);
+    }
+
+    public void updateBlog(Long blogId,
+                           String blogTitle,
+                           String categoryName,
+                           String blogImage,
+                           String article,
+                           Long accountId) {
+
+        Blog blog = blogDao.findById(blogId).orElse(null);
+
+        if (blog != null) {
+            blog.setBlogTitle(blogTitle);
+            blog.setCategoryName(categoryName);
+            blog.setBlogImage(blogImage);
+            blog.setArticle(article);
+            blog.setAccountId(accountId);
+
+            blogDao.save(blog);
+        }
+    }
 }

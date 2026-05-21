@@ -34,36 +34,44 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <!-- 今はデータがないため、空状態を表示 -->
-                <tr>
-                    <td colspan="5" class="empty-message">
-                        まだ記事がありません。
-                    </td>
-                </tr>
+			<tbody>
+			    <!-- 記事がない時 -->
+			    <tr th:if="${blogList == null or blogList.isEmpty()}">
+			        <td colspan="5" class="empty-message">
+			            まだ記事がありません。
+			        </td>
+			    </tr>
 
-                <!-- 以后连接数据库后，有数据时可以用下面这一段 -->
-                <!--
-                <tr>
-                    <td>
-                        <a href="/blog-detail" class="article-link">記事タイトル</a>
-                    </td>
-                    <td>料理</td>
-                    <td>2025/08/27<br>11:04</td>
-                    <td>
-                        <select class="status-select">
-                            <option>公開</option>
-                            <option>非公開</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button type="submit" class="save-btn">保存</button>
-                        <a href="/blog-edit" class="edit-btn">編集</a>
-                        <button type="button" class="delete-action-btn">削除</button>
-                    </td>
-                </tr>
-                -->
-            </tbody>
+			    <!-- 記事がある時 -->
+			    <tr th:each="blog : ${blogList}">
+			        <td>
+			            <a th:href="@{/blog-edit(blogId=${blog.blogId})}"
+			               th:text="${blog.blogTitle}"
+			               class="article-link">
+			                記事タイトル
+			            </a>
+			        </td>
+
+			        <td th:text="${blog.categoryName}">料理</td>
+
+			        <td>
+			            <span th:text="${blog.createdAt}">2026/05/21</span>
+			        </td>
+
+			        <td>
+			            <select class="status-select">
+			                <option>公開</option>
+			                <option>非公開</option>
+			            </select>
+			        </td>
+
+			        <td>
+			            <button type="submit" class="save-btn">保存</button>
+			            <a th:href="@{/blog-edit(blogId=${blog.blogId})}" class="edit-btn">編集</a>
+			            <button type="button" class="delete-action-btn">削除</button>
+			        </td>
+			    </tr>
+			</tbody>
         </table>
     </section>
 

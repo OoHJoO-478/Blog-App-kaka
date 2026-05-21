@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>ブログ一覧画面</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="blog-page">
 
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a href="/blog-list"th:text="${accountName}"></a>
-        <a href="/blog-form">Blog Register</a>
+        <a th:href="@{/blog-list}"th:text="${accountName}"></a>
+        <a th:href="@{/blog-form}">Blog Register</a>
         <a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>

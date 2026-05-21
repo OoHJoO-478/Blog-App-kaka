@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ブログ登録画面</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body class="blog-page blog-form-page">
@@ -11,9 +11,9 @@
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a href="/blog-list">Home</a>
-        <a href="/blog-form">Blog Register</a>
-        <a href="/logout" class="logout">Logout</a>
+		<a th:href="@{/blog-list}"th:text="${accountName}"></a>
+		<a th:href="@{/blog-form}">Blog Register</a>
+		<a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>
 
@@ -24,8 +24,7 @@
             タイトル・カテゴリ・カバー画像・本文を入力して、公開または下書き保存できます。
         </p>
 
-        <form action="/blog-register" method="post">
-
+        <form th:action="@{/blog/register/process}" method="post" enctype="multipart/form-data">
             <label>タイトル</label>
             <input type="text" name="blogTitle" placeholder="例）個人開発のまとめ">
             <p class="form-hint">120文字まで</p>
@@ -46,8 +45,8 @@
                 <span>0文字</span>
             </div>
 
-            <label>カバー画像</label>
-            <input type="file" name="blogImage">
+			<label>カバー画像</label>
+			<input type="file" name="blogImageFile">
 
             <div class="image-preview">
                 画像プレビュー
@@ -68,6 +67,17 @@
 </main>
 
 <footer>Copyright © SMH All rights reserved</footer>
+<script>
+    const fileInput = document.querySelector('input[name="blogImageFile"]');
+    const preview = document.querySelector('.image-preview');
 
+    fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+
+        if (file) {
+            preview.innerHTML = `<img src="${URL.createObjectURL(file)}" alt="preview">`;
+        }
+    });
+</script>
 </body>
 </html>
