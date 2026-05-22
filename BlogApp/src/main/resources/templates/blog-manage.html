@@ -65,11 +65,14 @@
 			            </select>
 			        </td>
 
-			        <td>
-			            <button type="submit" class="save-btn">保存</button>
-			            <a th:href="@{/blog-edit(blogId=${blog.blogId})}" class="edit-btn">編集</a>
-			            <button type="button" class="delete-action-btn">削除</button>
-			        </td>
+					<td>
+					    <a th:href="@{/blog-edit(blogId=${blog.blogId})}" class="edit-btn">編集</a>
+
+					    <form th:action="@{/blog-delete}" method="post" class="delete-form">
+					        <input type="hidden" name="blogId" th:value="${blog.blogId}">
+					        <button type="submit" class="delete-action-btn">削除</button>
+					    </form>
+					</td>
 			    </tr>
 			</tbody>
         </table>
@@ -80,6 +83,18 @@
 <footer>
     Copyright © SMH All rights reserved
 </footer>
+<script>
+    const deleteForms = document.querySelectorAll('.delete-form');
 
+    deleteForms.forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            const result = confirm('本当にこの記事を削除しますか？');
+
+            if (!result) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
 </body>
 </html>

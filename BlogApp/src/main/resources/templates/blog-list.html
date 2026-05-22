@@ -5,48 +5,91 @@
     <title>ブログ一覧画面</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body class="blog-page">
 
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a th:href="@{/blog-list}"th:text="${accountName}"></a>
+        <a th:href="@{/blog-list}" th:text="${accountName}">User</a>
         <a th:href="@{/blog-form}">Blog Register</a>
         <a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>
 
 <main class="blog-main">
+
     <section class="blog-top">
         <h1>ようこそ、<span th:text="${accountName}">User</span> さん！</h1>
         <p>ここからブログを書いたり、編集したり、管理できます。</p>
         <a href="/blog-form" class="main-btn">新しい記事を書く</a>
     </section>
-    
-   <section class="blog-card">
-    <div class="card-title-row">
-        <h2>ブログ記事一覧</h2>
-        <a href="/blog-manage" class="manage-link">記事ステータス管理</a>
+
+    <div class="blog-layout">
+
+        <aside class="profile-card">
+			<div class="profile-cover">
+			    <img src="/img/main-img.png" alt="main">
+			</div>
+
+            <section class="profile-box">
+                <h3>About Me</h3>
+                <p>📍 Tokyo</p>
+                <p>💻 IT Engineer</p>
+                <p>📝 Blog Writer</p>
+            </section>
+
+            <section class="profile-box">
+                <h3>サイト統計</h3>
+                <div class="stats-grid">
+                    <div>記事<br><span th:text="${blogList.size()}">0</span></div>
+                    <div>分類<br><span>3</span></div>
+                    <div>留言<br><span>0</span></div>
+                    <div>運営<br><span>1日</span></div>
+                </div>
+            </section>
+        </aside>
+
+        <section class="blog-content">
+
+            <div class="search-area">
+                <input type="text" placeholder="キーワードで検索">
+                <button type="button">検索</button>
+            </div>
+
+			<div class="main-visual">
+			    <img src="/img/bg-img.png" alt="main image">
+			</div>
+
+            <section class="blog-list-card">
+                <div class="card-title-row">
+                    <h2>ブログ記事一覧</h2>
+                    <a href="/blog-manage" class="manage-link">記事ステータス管理</a>
+                </div>
+
+                <article class="article-item" th:each="blog:${blogList}">
+                    <div class="article-img">
+                        <img th:if="${blog.blogImage != null and blog.blogImage != ''}"
+                             th:src="@{/img/{imagePath}(imagePath=${blog.blogImage})}"
+                             alt="cover">
+
+                        <span th:if="${blog.blogImage == null or blog.blogImage == ''}">
+                            No Image
+                        </span>
+                    </div>
+
+                    <div class="article-content">
+                        <h3 th:text="${blog.blogTitle}">記事タイトル</h3>
+                        <p>・by <span th:text="${accountName}">User</span></p>
+                        <a th:href="@{/blog-edit(blogId=${blog.blogId})}">続きを読む →</a>
+                    </div>
+                </article>
+            </section>
+
+        </section>
+
     </div>
 
-	<article class="article-item" th:each="blog:${blogList}">
-		<div class="article-img">
-		    <img th:if="${blog.blogImage != null and blog.blogImage != ''}"
-		         th:src="@{/img/{imagePath}(imagePath=${blog.blogImage})}"
-		         alt="cover">
-
-		    <span th:if="${blog.blogImage == null or blog.blogImage == ''}">
-		        No Image
-		    </span>
-		</div>
-
-	    <div>
-	        <h3 th:text="${blog.blogTitle}">記事タイトル</h3>
-	        <p>・by <span th:text="${accountName}">User</span></p>
-	        <a th:href="@{/blog-edit(blogId=${blog.blogId})}">続きを読む →</a>
-	    </div>
-	</article>
-</section>
 </main>
 
 <footer>Copyright © SMH All rights reserved</footer>

@@ -177,29 +177,227 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-
 /* =========================
    3. ブログ一覧画面
    blog-list.html
 ========================= */
 
-/* 記事1件分 */
-.article-item {
+/* list页面下半部分：左侧个人信息 + 右侧博客内容 */
+.blog-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+/* 左侧个人信息整体卡片 */
+.profile-card {
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* 左侧个人图片区域 */
+.profile-cover {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 18px;
+    margin-bottom: 22px;
+}
+
+/* 左侧个人图片本身 */
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 大图图片本身 */
+.main-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 左侧 About Me / 统计 小卡片 */
+.profile-box {
+    background: rgba(238, 243, 250, 0.85);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+/* 小卡片标题 */
+.profile-box h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #6b7a90;
+}
+
+/* 小卡片文字 */
+.profile-box p {
+    margin: 10px 0;
+    color: #6b7a90;
+}
+
+/* 统计区域：两列 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* 统计小格子 */
+.stats-grid div {
+    background: white;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    color: #6b7a90;
+}
+
+/* 右侧整体：搜索、大图、列表纵向排列 */
+.blog-content {
     display: flex;
-    gap: 25px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 搜索区域 */
+.search-area {
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 45px;
+    padding: 24px 36px;
+    display: flex;
+    gap: 18px;
     align-items: center;
 }
 
-/* No Image 部分 */
-.article-img {
-    width: 170px;
-    height: 120px;
+/* 搜索输入框 */
+.search-area input {
+    width: 600px;
+    height: 38px;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* 搜索按钮 */
+.search-area button {
+    width: 160px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #1e90ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 右侧顶部大图区域 */
+.main-visual {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 28px;
+    margin-bottom: 10px;
+}
+
+/* 大图图片本身 */
+.main-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 博客列表整体卡片 */
+.blog-list-card {
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 42px;
+    padding: 36px;
+}
+
+/* 列表标题行 */
+.card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+/* 列表标题 */
+.card-title-row h2 {
+    margin: 0;
+}
+
+/* 管理页面链接 */
+.manage-link {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 每一篇文章 */
+.blog-list-card .article-item {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+/* 文章图片区域 */
+.blog-list-card .article-img {
+    width: 260px;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 18px;
     background: #eef3fa;
-    border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #7d8ca3;
+}
+
+/* 文章图片本身 */
+.blog-list-card .article-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 文章标题 */
+.article-content h3 {
+    font-size: 26px;
+    margin: 0 0 20px;
+}
+
+/* 作者信息 */
+.article-content p {
+    font-size: 18px;
+    margin-bottom: 18px;
+    color: #6b7a90;
+}
+
+/* 続きを読む */
+.article-content a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 鼠标放上去时显示下划线 */
+.article-content a:hover {
+    text-decoration: underline;
 }
 
 

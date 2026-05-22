@@ -54,4 +54,7 @@ public class BlogServices {
             blogDao.save(blog);
         }
     }
+    public void deleteBlog(Long blogId) {
+        blogDao.deleteById(blogId);
+    }
 }
