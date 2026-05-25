@@ -11,9 +11,9 @@
 <header class="blog-header">
     <div class="logo">Blog</div>
     <nav>
-        <a href="/blog-list">Home</a>
-        <a href="/blog-form">Blog Register</a>
-        <a href="/logout" class="logout">Logout</a>
+		<a th:href="@{/blog-list}" th:text="${accountName}">User</a>
+		<a th:href="@{/blog-form}">Blog Register</a>
+		<a th:href="@{/blog/logout}" class="logout">Logout</a>
     </nav>
 </header>
 

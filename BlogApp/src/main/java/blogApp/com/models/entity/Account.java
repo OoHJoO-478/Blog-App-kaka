@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+//accountテーブルと対応するEntityクラス
+//データベースのアカウント情報をJavaのオブジェクトとして扱うためのクラス
 @Entity
 public class Account {
 	@Id
@@ -20,11 +22,17 @@ public class Account {
 	
 	private String password;
 	
+	// 登録日
+    // データベース側で自動生成するため、JavaからINSERTしない
 	@Column(insertable = false)
 	private LocalDateTime registerDate;
 
+	// デフォルトコンストラクタ
+    // JPAがEntityを生成するために必要
 	public Account() {
 	}
+	// 会員登録時に使用するコンストラクタ
+    // 登録日はデータベース側で自動生成されるため、ここでは設定しない
 	public Account(String accountEmail, String accountName, String password) {
 	    this.accountEmail = accountEmail;
 	    this.accountName = accountName;

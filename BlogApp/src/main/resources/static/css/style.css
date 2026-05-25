@@ -285,6 +285,9 @@
     padding: 0 14px;
     font-size: 15px;
     box-sizing: border-box;
+	border: 3px solid #9bb8d0;
+	color: #6b7a90;
+	
 }
 
 /* 搜索按钮 */
