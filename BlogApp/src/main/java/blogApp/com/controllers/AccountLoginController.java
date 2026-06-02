@@ -24,7 +24,7 @@ public class AccountLoginController {
     // URL：http://localhost:8080/login
 	@GetMapping("/login")
 	public String getAccountRegisterPage() {
-		return "login";
+		return "login.html";
 	}
 	// ログインフォームから送信されたメールアドレスとパスワードを受け取る
 	@PostMapping("/login/process")
@@ -34,7 +34,7 @@ public class AccountLoginController {
 		Account account = accountServices.loginCheck(accountEmail, password);
 		// アカウントが存在しない場合、ログイン画面に戻る
 		if(account == null) {
-			return "login";
+			return "login.html";
 		// アカウントが存在する場合、ログイン成功
 		}else {
 			// ログインしたユーザー情報をセッションに保存する

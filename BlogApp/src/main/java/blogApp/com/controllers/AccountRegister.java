@@ -30,10 +30,10 @@ public class AccountRegister {
 		// 入力された名前・メールアドレス・パスワードを使って新規アカウントを作成する
 	    if (accountServices.createAccount(accountEmail, accountName, password)) {
 	    	// 登録成功時はログイン画面へ遷移する
-	        return "login";
+	        return "login.html";
 	    } else {
 	    	// 登録失敗時は会員登録画面へ戻る
-	        return "register";
+	        return "register.html";
 	    }
 	}
 
